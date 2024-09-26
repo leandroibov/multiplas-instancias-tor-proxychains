@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#tor-daemon3.sh
+#Developer Leandro Santos - https://github.com/leandroibov
+
+echo "Tor-Daemon3";
+echo "";
+
+echo "Creating Tor Instance 3 -> 127.0.0.1 and port 9062";
+echo "Instância 3 do tor service rodará em 127.0.0.1 e porta 9062";
+sudo cat > /etc/tor/torrc.3 << EOF
+SocksPort 9062
+ControlPort 9063
+DataDirectory /var/lib/tor3
+EOF
+
+echo;
+echo "Configured torrc.3 file:";
+echo "Configurando arquivo torrc.3";
+cat /etc/tor/torrc.3;
+echo;
+ls /etc/tor/;
+echo;
+echo "Acionando Instância 3 do Tor";
+echo "Triggering Tor Instance 3"
+echo "sudo tor -f /etc/tor/torrc.3";
+echo;
+echo "ATENÇÃO: PARA DESLIGAR O TOR-DAEMON3, USE CONTROL + C!";
+echo "WARNING: TO TURN OFF TOR-DAEMON3, USE CONTROL + C!";
+echo "sudo tor -f /etc/tor/torrc.3;";
+echo;
+sudo tor -f /etc/tor/torrc.3;
+echo;

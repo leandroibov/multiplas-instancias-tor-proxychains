@@ -1,0 +1,104 @@
+#!/bin/bash
+
+#proxychains_3tors
+#Developer Leandro Santos - https://github.com/leandroibov
+
+#Checando se proxychains4 está instalado...
+if ! command -v proxychains4 &> /dev/null; then
+    echo "Proxychains4 não está instalado. Tentando instalar..."
+    sudo apt install proxychains4 -y
+    if [ $? -ne 0 ]; then
+        echo "Falha na instalação do proxychains4. Verifique as permissões ou a conexão."
+        exit 1
+    fi
+else
+    echo "Proxychains4 já está instalado. Continuando..."
+fi
+
+echo "Criando 3 arquivos para 3 tors-daemons";
+echo "Creating 3 files for 3 tors-daemons";
+echo "Run as normal user | Execute como usuário normal"
+echo "";
+
+
+echo "Tor-Daemon2 - 127-0.0.1 9060";
+echo "Salvando arquivo de configuração tor-daemon2 do proxychains4 em ~/Downloads do seu usuário";
+echo "Saving proxychains4's tor-daemon2 configuration file to ~/Your user's downloads";
+cat > ~/Downloads/proxychains4.2.conf << EOF
+dynamic_chain
+proxy_dns
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+[ProxyList]
+socks4  127.0.0.1 9060
+socks5 127.0.0.1 9060
+EOF
+echo;
+echo "cat ~/Downloads/proxychains4.2.conf";
+cat ~/Downloads/proxychains4.2.conf
+echo;
+
+echo "Tor-Daemon3 - 127-0.0.1 9062";
+echo "Salvando arquivo de configuração tor-daemon3 do proxychains4 em ~/Downloads do seu usuário";
+echo "Saving proxychains4's tor-daemon3 configuration file to ~/Your user's downloads";
+cat > ~/Downloads/proxychains4.3.conf << EOF
+dynamic_chain
+proxy_dns
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+[ProxyList]
+socks4  127.0.0.1 9062
+socks5 127.0.0.1 9062
+EOF
+echo;
+echo "cat ~/Downloads/proxychains4.3.conf";
+cat ~/Downloads/proxychains4.3.conf
+echo;
+
+echo "Tor-Daemon4 - 127-0.0.1 9064";
+echo "Salvando arquivo de configuração tor-daemon4 do proxychains4 em ~/Downloads do seu usuário";
+echo "Saving proxychains4's tor-daemon4 configuration file to ~/Your user's downloads";
+cat > ~/Downloads/proxychains4.4.conf << EOF
+dynamic_chain
+proxy_dns
+tcp_read_time_out 15000
+tcp_connect_time_out 8000
+[ProxyList]
+socks4  127.0.0.1 9064
+socks5 127.0.0.1 9064
+EOF
+echo;
+echo "cat ~/Downloads/proxychains4.4.conf";
+cat ~/Downloads/proxychains4.4.conf
+echo;
+
+echo;
+
+echo "Exemplos de uso de proxychains4 -f com os arquivos de configuração";
+echo "Tem que ter instalado o proxychains4, o proxychains antigo não funciona com -f : sudo apt install proxychains4 -y;";
+echo "Rode as instâncias 2,3 e 4 do tor service com os scripts tor-daemon2, tor-daemon3, tor-daemon4";
+echo "Examples of using proxychains4 -f with the configuration files";
+echo "You need to have proxychains4 installed; the old proxychains doesn't work with -f: sudo apt install proxychains4 -y;";
+echo "Run instances 2, 3, and 4 of the Tor service with the scripts tor-daemon2, tor-daemon3, tor-daemon4";
+
+echo;
+echo "Exemplos... de múltiplos proxychains4 com múltiplas instâncias do tor service!";
+echo "Examples... of multiple proxychains4 with multiple instances of the Tor service!";
+echo "";
+echo "cd ~/Downloads";
+echo "proxychains4 -f ~/Downloads/proxychains4.2.conf ~/Telegram/Telegram";
+echo "proxychains4 -f ~/Downloads/proxychains4.3.conf ~/Downloads/Cake_nano_wallet/cake_wallet/cake_wallet";
+
+echo;
+echo "Outro exemplo: navegue até a pasta com os arquivos de configuração e...";
+echo "proxychains4 -f proxychains4.2.conf firefox";
+echo "proxychains4 -f proxychains4.3.conf ./cake_wallet";
+echo "proxychains4 -f proxychains4.4.conf signal-desktop";
+echo "";
+echo "";
+
+
+
+
+
+

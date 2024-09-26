@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#tor-daemon4.sh
+#Developer Leandro Santos - https://github.com/leandroibov
+
+echo "Tor-Daemon4";
+echo "";
+
+echo "Creating Tor Instance 4 -> 127.0.0.1 and port 9064";
+echo "Instância 4 do tor service rodará em 127.0.0.1 e porta 9064";
+sudo cat > /etc/tor/torrc.4 << EOF
+SocksPort 9064
+ControlPort 9065
+DataDirectory /var/lib/tor4
+EOF
+
+echo;
+echo "Configured torrc.4 file:";
+echo "Configurando arquivo torrc.4";
+cat /etc/tor/torrc.4;
+echo;
+ls /etc/tor/;
+echo;
+echo "Acionando Instância 4 do Tor";
+echo "Triggering Tor Instance 4"
+echo "sudo tor -f /etc/tor/torrc.4";
+echo;
+echo "ATENÇÃO: PARA DESLIGAR O TOR-DAEMON4, USE CONTROL + C!";
+echo "WARNING: TO TURN OFF TOR-DAEMON4, USE CONTROL + C!";
+echo "sudo tor -f /etc/tor/torrc.4;";
+echo;
+sudo tor -f /etc/tor/torrc.4;
+echo;

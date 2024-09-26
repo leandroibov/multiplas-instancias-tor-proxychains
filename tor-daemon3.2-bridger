@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#tor-daemon3-bridger.sh
+#Developer Leandro Santos - https://github.com/leandroibov
+
+echo "Tor-Daemon3-Bridger";
+echo "Usa 2 Bridges obfs4";
+echo "Precisa ter instalado o obfs4proxy - Links abaixo:";
+echo "https://packages.debian.org/buster/amd64/obfs4proxy/download";
+echo "https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird";
+echo "sudo apt-get install obfs4proxy";
+echo "";
+echo "Bridges devem ser copiadas inteiras para o arquivo torrc como são fornecidas com suas fingerprints e outros dados";
+echo "Exemplo1: obfs4 89.10.110.191:7624 7EC3CE9AB0640524C77FCF361C85E50A9E07F506 cert=i9s53eikMKz4BiU/yYyFpJaBfGm/9xvNf97dnkI6iPg3Ls5TRoyOwhaIQprLgPruBf/zYA iat-mode=2";
+echo;
+echo "Colete bridges do tipo obfs4 em https://bridges.torproject.org/bridges";
+echo "--------------------------------------------------------------";
+read -rp "Digite a Bridge obfs4 que deseja cadastrar no torrc.2:" bridge
+echo "--------------------------------------------------------------";
+echo "A bridge escolhida foi: $bridge"
+echo "--------------------------------------------------------------";
+read -rp "Digite a Bridge2 obfs4 que deseja cadastrar no torrc.2:" bridge2
+echo "--------------------------------------------------------------";
+echo "A bridge escolhida foi: $bridge2"
+echo "";
+
+echo;
+
+echo "Creating Tor Instance 3 com bridges -> 127.0.0.1 and port 9062";
+echo "Instância 3 do tor service rodará com bridge em 127.0.0.1 e porta 9062";
+sudo cat > /etc/tor/torrc.3 << EOF
+SocksPort 9062
+ControlPort 9063
+DataDirectory /var/lib/tor3
+
+UseBridges 1
+ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy managed
+Bridge "$bridge"
+Bridge "$bridge2"
+EOF
+
+echo;
+echo "Configured torrc.3 file:";
+echo "Configurando arquivo torrc.3";
+cat /etc/tor/torrc.3;
+echo;
+ls /etc/tor/;
+echo;
+echo "Acionando Instância 3 do Tor com Bridge";
+echo "Triggering Tor Instance 3 with Bridge"
+echo "sudo tor -f /etc/tor/torrc.3";
+echo;
+echo "ATENÇÃO: PARA DESLIGAR O TOR-DAEMON3, USE CONTROL + C!";
+echo "WARNING: TO TURN OFF TOR-DAEMON3, USE CONTROL + C!";
+echo "sudo tor -f /etc/tor/torrc.3;";
+echo;
+sudo tor -f /etc/tor/torrc.3;
+echo;
