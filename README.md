@@ -49,6 +49,84 @@ tor-daemon4.2-bridger #Cria uma instância de tor service com uma SocksPort 9064
 
 tor-daemon4-bridger #Cria uma instância de tor service com uma SocksPort 9064 e 1 bridge
 
+#################################################################################################
+
+***Executar e Liberar execução
+
+chmod +x  multiple-proxychains-exemples
+
+chmod +x  proxychains_3tors
+
+chmod +x  tor-daemon2
+
+chmod +x  tor-daemon2.2-bridger
+
+chmod +x  tor-daemon2-bridger
+
+chmod +x  tor-daemon3
+
+chmod +x  tor-daemon3.2-bridger
+
+chmod +x  tor-daemon3-bridger
+
+chmod +x  tor-daemon4
+
+chmod +x  tor-daemon4.2-bridger
+
+chmod +x  tor-daemon4-bridger
+
+
+***Executando
+
+./multiple-proxychains-exemples
+
+./proxychains_3tors
+
+./tor-daemon2
+
+./tor-daemon2.2-bridger
+
+./tor-daemon2-bridger
+
+./tor-daemon3
+
+./tor-daemon3.2-bridger
+
+./tor-daemon3-bridger
+
+./tor-daemon4
+
+./tor-daemon4.2-bridger
+
+./tor-daemon4-bridger
+
+
+***Executando, opção 2
+
+#Depois de copiar para /bin, basta digitar o nome de qualquer lugar do terminal linux.
+
+cp -r multiple-proxychains-exemples /bin 
+
+cp -r proxychains_3tors /bin 
+
+cp -r tor-daemon2 /bin 
+
+cp -r tor-daemon2.2-bridger /bin 
+
+cp -r tor-daemon2-bridger /bin 
+
+cp -r tor-daemon3 /bin 
+
+cp -r tor-daemon3.2-bridger /bin 
+
+cp -r tor-daemon3-bridger /bin 
+
+cp -r tor-daemon4 /bin 
+
+cp -r tor-daemon4.2-bridger /bin 
+
+cp -r tor-daemon4-bridger /bin 
+
 
 
 
