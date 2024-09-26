@@ -133,6 +133,32 @@ cp -r tor-daemon4-bridger /bin
 
 ##############################################################################################
 
+Como Funciona e Exemplos de Aplicações
+
+Os arquivos gravados em ~/Downloads do seu usuário contêm as configurações de IP e porta a serem utilizadas para a instância desejada do Tor daemon:
+
+proxychains4.2.conf # 127.0.0.1:9060
+
+proxychains4.3.conf # 127.0.0.1:9062
+
+proxychains4.4.conf # 127.0.0.1:9064
+
+***Ao utilizar o proxychains4 -f com os arquivos de configuração correspondentes, podemos rotear o tráfego da instância do Tor para aplicações específicas, isolando esse circuito dos outros circuitos de diferentes instâncias. Veja alguns exemplos:
+
+proxychains4 firefox
+
+proxychains4 -f ~/Downloads/proxychains4.2.conf ~/Downloads/Cake_nano_wallet/cake_wallet/cake_wallet
+
+proxychains4 -f ~/Downloads/proxychains4.3.conf ~/Telegram/Telegram
+
+proxychains4 -f ~/Downloads/proxychains4.4.conf ~/Downloads/Electrum/electrum-4.5.5-x86_64.AppImage
+
+
+
+
+
+##############################################################################################
+
 Doe monero para nos ajudar:
 
 87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
