@@ -23,3 +23,37 @@ f0144e1c0cef8d550b23b42d42c88df98b6f4d8a485545f77619d6164791188d  tor-daemon4
 620074e410727d5348a9a744b4c8fa03f27c463782a99ab8e9160a9fe304062a  tor-daemon4-bridger
 
 #################################################################################################
+
+
+O que faz cada script!
+
+multiple-proxychains-exemples #Mostra comandos de exemplo com proxychains e tor daemons em diferentes instâncias
+
+proxychains_3tors #Cria arquivos de configuração proxychains4.conf relacionado a um circuito distinto criado no tor service
+
+tor-daemon2 #Cria uma instância de tor service com uma SocksPort 9060 e sem bridge
+
+tor-daemon2.2-bridger #Cria uma instância de tor service com uma SocksPort 9060 e com 2 bridges
+
+tor-daemon2-bridger #Cria uma instância de tor service com uma SocksPort 9060 e 1 bridge
+
+tor-daemon3 #Cria uma instância de tor service com uma SocksPort 9062 e sem bridge
+
+tor-daemon3.2-bridger #Cria uma instância de tor service com uma SocksPort 9062 e 2 bridges
+
+tor-daemon3-bridger #Cria uma instância de tor service com uma SocksPort 9062 e 1 bridge
+
+tor-daemon4 #Cria uma instância de tor service com uma SocksPort 9064 e sem bridge
+
+tor-daemon4.2-bridger #Cria uma instância de tor service com uma SocksPort 9064 e 2 bridges
+
+tor-daemon4-bridger #Cria uma instância de tor service com uma SocksPort 9064 e 1 bridge
+
+
+
+
+
+
+
+
+
