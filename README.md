@@ -4,6 +4,8 @@ hashs: sha256sum
 
 5597315610284d93a98cfc2cf54486370271062b553ba19d98aa56d5cda3d251  multiple-proxychains-exemples
 
+318a6cb03dabd6c2639cf2dbb5875eb921239d61cf55eb3d2a292c28f46cf983 checkbridges
+
 1880074855391e969cd9d4947b3d983e255ca929b47080101a7a7478b868d7c2  proxychains_3tors
 
 91f5349af836d43f699dc99088e1a5cdecbcebe8a707c9502d655e2e08a877b4  tor-daemon2
@@ -30,6 +32,8 @@ f0144e1c0cef8d550b23b42d42c88df98b6f4d8a485545f77619d6164791188d  tor-daemon4
 O que faz cada script!
 
 multiple-proxychains-exemples #Mostra comandos de exemplo com proxychains e tor daemons em diferentes instâncias
+
+checkbridges #checa se a bridge está conectada
 
 proxychains_3tors #Cria arquivos de configuração proxychains4.conf relacionado a um circuito distinto criado no tor service
 
@@ -77,6 +81,8 @@ chmod +x  tor-daemon4.2-bridger
 
 chmod +x  tor-daemon4-bridger
 
+chmod +x checkbridges
+
 
 ***Executando
 
@@ -101,6 +107,8 @@ chmod +x  tor-daemon4-bridger
 ./tor-daemon4.2-bridger
 
 ./tor-daemon4-bridger
+
+./checkbridges
 
 
 ***Executando, opção 2
@@ -129,7 +137,7 @@ cp -r tor-daemon4.2-bridger /bin
 
 cp -r tor-daemon4-bridger /bin 
 
-
+cp -r checkbridges /bin
 
 ##############################################################################################
 
