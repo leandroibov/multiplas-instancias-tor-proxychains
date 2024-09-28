@@ -175,7 +175,9 @@ Página oficial de segurança digital:
 
 https://traderprofissional.com.br/seguranca-digital.aspx
 
-Vídeo tutorial youtube: atualizando...
+Vídeo tutorial youtube: 
+
+https://www.youtube.com/watch?v=SxXoQgYH7J4&t=19s
 
 
 
