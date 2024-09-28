@@ -6,28 +6,70 @@
 echo "Tor-Daemon4";
 echo "";
 
+#*****
+echo "Procurando tor id do seu linux..."
+echo "Seaching tor user in the system..."
+if command -v pacman > /dev/null; then
+  TOR_USER=$(getent passwd tor | cut -d: -f1)
+elif command -v apt > /dev/null; then
+  TOR_USER=$(getent passwd debian-tor | cut -d: -f1)
+elif command -v dnf > /dev/null; then
+  TOR_USER=$(getent passwd toranon | cut -d: -f1)
+else
+  echo "Distribuição desconhecida!"
+  echo "Unknown distro!"
+  exit
+fi
+
+if [ -n "$TOR_USER" ]; then
+  echo "O usuário Tor no sistema é: $TOR_USER"
+  echo "The Tor user on the system is: $TOR_USER"
+else
+  echo "Usuário Tor não encontrado. Por favor, instale o Tor Hidden Service."
+  echo "Tor user not found. Please install the Tor Hidden Service."
+  echo "https://support.torproject.org/apt/"
+
+fi
+#*****
+
 echo "Creating Tor Instance 4 -> 127.0.0.1 and port 9064";
 echo "Instância 4 do tor service rodará em 127.0.0.1 e porta 9064";
-sudo cat > /etc/tor/torrc.4 << EOF
+echo "Arquivos de configuração e pastas criadas em /var/tmp/torrc.4 e /var/tmp/tor4 para usuário "$TOR_USER"";
+echo "";
+echo "";
+sudo cat > /var/tmp/torrc.4 << EOF
 SocksPort 9064
 ControlPort 9065
-DataDirectory /var/lib/tor4
+DataDirectory /var/tmp/tor4
 EOF
+sudo mkdir /var/tmp/tor4;
+sudo chown "$TOR_USER":"$TOR_USER" /var/tmp/tor4;
+sudo chown "$TOR_USER":"$TOR_USER" /var/tmp/torrc.4;
+
 
 echo;
 echo "Configured torrc.4 file:";
 echo "Configurando arquivo torrc.4";
-cat /etc/tor/torrc.4;
+echo "/var/tmp/torrc.4 e /var/tmp/tor4 (DataDirectory)"
+cat /var/tmp/torrc.4;
 echo;
-ls /etc/tor/;
+#ls /var/tmp;
 echo;
 echo "Acionando Instância 4 do Tor";
 echo "Triggering Tor Instance 4"
-echo "sudo tor -f /etc/tor/torrc.4";
+echo "sudo -u "$TOR_USER" tor -f /var/tmp/torrc.4";
 echo;
 echo "ATENÇÃO: PARA DESLIGAR O TOR-DAEMON4, USE CONTROL + C!";
 echo "WARNING: TO TURN OFF TOR-DAEMON4, USE CONTROL + C!";
-echo "sudo tor -f /etc/tor/torrc.4;";
 echo;
-sudo tor -f /etc/tor/torrc.4;
+#Rodar como sudo é perigoso, por isso o script foi mudado para rodar com o usuário tor encontrado...
+#sudo tor -f /var/tmp/torrc.2; #excluído do código...
+sudo -u "$TOR_USER" tor -f /var/tmp/torrc.4;
 echo;
+
+
+
+
+
+
+

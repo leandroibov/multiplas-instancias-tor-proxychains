@@ -1,15 +1,43 @@
 #!/bin/bash
 
-#tor-daemon3-bridger.sh
+#tor-daemon3.2-bridger.sh
 #Developer Leandro Santos - https://github.com/leandroibov
 
-echo "Tor-Daemon3-Bridger";
+echo "Tor-Daemon3.2-Bridger";
 echo "Usa 2 Bridges obfs4";
 echo "Precisa ter instalado o obfs4proxy - Links abaixo:";
 echo "https://packages.debian.org/buster/amd64/obfs4proxy/download";
 echo "https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird";
 echo "sudo apt-get install obfs4proxy";
 echo "";
+
+#*****
+echo "Procurando tor id do seu linux..."
+echo "Seaching tor user in the system..."
+if command -v pacman > /dev/null; then
+  TOR_USER=$(getent passwd tor | cut -d: -f1)
+elif command -v apt > /dev/null; then
+  TOR_USER=$(getent passwd debian-tor | cut -d: -f1)
+elif command -v dnf > /dev/null; then
+  TOR_USER=$(getent passwd toranon | cut -d: -f1)
+else
+  echo "Distribuição desconhecida!"
+  echo "Unknown distro!"
+  exit
+fi
+
+if [ -n "$TOR_USER" ]; then
+  echo "O usuário Tor no sistema é: $TOR_USER"
+  echo "The Tor user on the system is: $TOR_USER"
+else
+  echo "Usuário Tor não encontrado. Por favor, instale o Tor Hidden Service."
+  echo "Tor user not found. Please install the Tor Hidden Service."
+  echo "https://support.torproject.org/apt/"
+
+fi
+#*****
+
+
 echo "Bridges devem ser copiadas inteiras para o arquivo torrc como são fornecidas com suas fingerprints e outros dados";
 echo "Exemplo1: obfs4 89.10.110.191:7624 7EC3CE9AB0640524C77FCF361C85E50A9E07F506 cert=i9s53eikMKz4BiU/yYyFpJaBfGm/9xvNf97dnkI6iPg3Ls5TRoyOwhaIQprLgPruBf/zYA iat-mode=2";
 echo;
@@ -25,34 +53,41 @@ echo "A bridge escolhida foi: $bridge2"
 echo "";
 
 echo;
-
 echo "Creating Tor Instance 3 com bridges -> 127.0.0.1 and port 9062";
 echo "Instância 3 do tor service rodará com bridge em 127.0.0.1 e porta 9062";
-sudo cat > /etc/tor/torrc.3 << EOF
+echo "Arquivos de configuração e pastas criadas em /var/tmp/torrc.3 e /var/tmp/tor3 para usuário "$TOR_USER"";
+sudo cat > /var/tmp/torrc.3 << EOF
 SocksPort 9062
 ControlPort 9063
-DataDirectory /var/lib/tor3
+DataDirectory /var/tmp/tor3 
 
 UseBridges 1
 ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy managed
 Bridge "$bridge"
 Bridge "$bridge2"
 EOF
+sudo mkdir /var/tmp/tor3;
+sudo chown "$TOR_USER":"$TOR_USER" /var/tmp/tor3;
+sudo chown "$TOR_USER":"$TOR_USER" /var/tmp/torrc.3;
 
 echo;
 echo "Configured torrc.3 file:";
 echo "Configurando arquivo torrc.3";
-cat /etc/tor/torrc.3;
+echo "/var/tmp/torrc.3 e /var/tmp/tor3 (DataDirectory)"
+cat /var/tmp/torrc.3;
 echo;
-ls /etc/tor/;
+#ls /var/tmp;
 echo;
-echo "Acionando Instância 3 do Tor com Bridge";
-echo "Triggering Tor Instance 3 with Bridge"
-echo "sudo tor -f /etc/tor/torrc.3";
+echo "Acionando Instância 3 do Tor";
+echo "Triggering Tor Instance 3"
+echo "sudo -u "$TOR_USER" tor -f /var/tmp/torrc.3";
 echo;
 echo "ATENÇÃO: PARA DESLIGAR O TOR-DAEMON3, USE CONTROL + C!";
 echo "WARNING: TO TURN OFF TOR-DAEMON3, USE CONTROL + C!";
-echo "sudo tor -f /etc/tor/torrc.3;";
 echo;
-sudo tor -f /etc/tor/torrc.3;
+#Rodar como sudo é perigoso, por isso o script foi mudado para rodar com o usuário tor encontrado...
+#sudo tor -f /var/tmp/torrc.3; #excluído do código...
+sudo -u "$TOR_USER" tor -f /var/tmp/torrc.3;
 echo;
+
+
