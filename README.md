@@ -2,36 +2,37 @@
 
 hashs: sha256sum
 
-5597315610284d93a98cfc2cf54486370271062b553ba19d98aa56d5cda3d251  multiple-proxychains-exemples
-
 318a6cb03dabd6c2639cf2dbb5875eb921239d61cf55eb3d2a292c28f46cf983 checkbridges
 
-1880074855391e969cd9d4947b3d983e255ca929b47080101a7a7478b868d7c2  proxychains_3tors
+1880074855391e969cd9d4947b3d983e255ca929b47080101a7a7478b868d7c2 proxychains_3tors
 
-91f5349af836d43f699dc99088e1a5cdecbcebe8a707c9502d655e2e08a877b4  tor-daemon2
+5597315610284d93a98cfc2cf54486370271062b553ba19d98aa56d5cda3d251 proxychains-comandos
 
-a6869ad6f9b0ec749627beef2abd24748322a726f8fc70ba766720c3c26cc341  tor-daemon2.2-bridger
+841d6bd9da6f1a0f0ecd5f824907e0b144e3aa7ddfbd78552b689174ebfd370a tor-daemon2
 
-d15451ccab64ed7bb5f467dc41a8fba029f9abfd21b33d7ddeec288bfcd72bda  tor-daemon2-bridger
+149d892120c925d9b1546814c7ffe8474c8d6688113aa66178b86deb902376d7 tor-daemon2.2-bridger
 
-4f7f7c62a7946be099af47f496542f524fffafed9f69e1ef94ecd262d14d753e  tor-daemon3
+8dbf51ad0ce3bd926d9f0e5532a50b178edd96a43e9b4b5dec0556f52755a175 tor-daemon2-bridger
 
-db0104ba80c27ce69b099ba27a4d6126513ca7cbc4cef78bbfc8d8052cd877af  tor-daemon3.2-bridger
+91ad0d1ac6d9fff10d7f2b26e2c9756625158c53f77cd8fe4c933557afb10d7a tor-daemon3
 
-3ab2216bd445580ca946dd9ac0c58010c573c5a5e39b70a54ec7737ea28ca9e2  tor-daemon3-bridger
+f770d206682bb17a002df7e67404d49579e12a56e6b4d6cd5a5d3997c83faf9b tor-daemon3.2-bridger
 
-f0144e1c0cef8d550b23b42d42c88df98b6f4d8a485545f77619d6164791188d  tor-daemon4
+cc2fbd04676bc84bca8f2f5b23eb96f4322d3780950bd90d56f375db606b904d tor-daemon3-bridger
 
-2e91b587fbb9d0ebf9b43f84cfc1bffb50778db79c3a8a700ca1c6d3cf304c7e  tor-daemon4.2-bridger
+6ead077a6282b6bd53da8f3cc95a8ec700e127ead39b65ce98da702ac1b1fa5f tor-daemon4
 
-620074e410727d5348a9a744b4c8fa03f27c463782a99ab8e9160a9fe304062a  tor-daemon4-bridger
+6be9fbb5c0e5bd585050053dc5a74b57fa1b99cbcafafaaa78050ca4ff38d2e4 tor-daemon4.2-bridger
+
+333b45d2d0c8075b66c0a7497b741750a902f4b75d440c86d3839d3471f6a7f6 tor-daemon4-bridger
+
 
 #################################################################################################
 
 
 O que faz cada script!
 
-multiple-proxychains-exemples #Mostra comandos de exemplo com proxychains e tor daemons em diferentes instâncias
+proxychains-comandos #Mostra comandos de exemplo com proxychains e tor daemons em diferentes instâncias
 
 checkbridges #checa se a bridge está conectada
 
@@ -59,7 +60,7 @@ tor-daemon4-bridger #Cria uma instância de tor service com uma SocksPort 9064 e
 
 ***Executar e Liberar execução
 
-chmod +x  multiple-proxychains-exemples
+chmod +x  proxychains-comandos
 
 chmod +x  proxychains_3tors
 
@@ -86,7 +87,7 @@ chmod +x checkbridges
 
 ***Executando
 
-./multiple-proxychains-exemples
+./proxychains-comandos
 
 ./proxychains_3tors
 
@@ -115,7 +116,7 @@ chmod +x checkbridges
 
 #Depois de copiar para /bin, basta digitar o nome de qualquer lugar do terminal linux.
 
-cp -r multiple-proxychains-exemples /bin 
+cp -r proxychains-comandos /bin 
 
 cp -r proxychains_3tors /bin 
 
