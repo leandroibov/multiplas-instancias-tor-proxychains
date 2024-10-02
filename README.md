@@ -1,30 +1,3 @@
-#################################################################################################
-
-hashs: sha256sum
-
-318a6cb03dabd6c2639cf2dbb5875eb921239d61cf55eb3d2a292c28f46cf983 checkbridges
-
-1880074855391e969cd9d4947b3d983e255ca929b47080101a7a7478b868d7c2 proxychains_3tors
-
-5597315610284d93a98cfc2cf54486370271062b553ba19d98aa56d5cda3d251 proxychains-comandos
-
-841d6bd9da6f1a0f0ecd5f824907e0b144e3aa7ddfbd78552b689174ebfd370a tor-daemon2
-
-149d892120c925d9b1546814c7ffe8474c8d6688113aa66178b86deb902376d7 tor-daemon2.2-bridger
-
-8dbf51ad0ce3bd926d9f0e5532a50b178edd96a43e9b4b5dec0556f52755a175 tor-daemon2-bridger
-
-91ad0d1ac6d9fff10d7f2b26e2c9756625158c53f77cd8fe4c933557afb10d7a tor-daemon3
-
-f770d206682bb17a002df7e67404d49579e12a56e6b4d6cd5a5d3997c83faf9b tor-daemon3.2-bridger
-
-cc2fbd04676bc84bca8f2f5b23eb96f4322d3780950bd90d56f375db606b904d tor-daemon3-bridger
-
-6ead077a6282b6bd53da8f3cc95a8ec700e127ead39b65ce98da702ac1b1fa5f tor-daemon4
-
-6be9fbb5c0e5bd585050053dc5a74b57fa1b99cbcafafaaa78050ca4ff38d2e4 tor-daemon4.2-bridger
-
-333b45d2d0c8075b66c0a7497b741750a902f4b75d440c86d3839d3471f6a7f6 tor-daemon4-bridger
 
 
 #################################################################################################
