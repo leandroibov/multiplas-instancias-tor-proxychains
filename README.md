@@ -1,9 +1,7 @@
 
 
-#################################################################################################
 
-
-O que faz cada script!
+# O que faz cada script!
 
 proxychains-comandos #Mostra comandos de exemplo com proxychains e tor daemons em diferentes instâncias
 
@@ -29,9 +27,9 @@ tor-daemon4.2-bridger #Cria uma instância de tor service com uma SocksPort 9064
 
 tor-daemon4-bridger #Cria uma instância de tor service com uma SocksPort 9064 e 1 bridge
 
-#################################################################################################
 
-***Executar e Liberar execução
+
+## Executar e Liberar execução
 
 chmod +x  proxychains-comandos
 
@@ -58,7 +56,7 @@ chmod +x  tor-daemon4-bridger
 chmod +x checkbridges
 
 
-***Executando
+## Executando
 
 ./proxychains-comandos
 
@@ -85,7 +83,7 @@ chmod +x checkbridges
 ./checkbridges
 
 
-***Executando, opção 2
+## Executando, opção 2
 
 #Depois de copiar para /bin, basta digitar o nome de qualquer lugar do terminal linux.
 
@@ -113,9 +111,8 @@ cp -r tor-daemon4-bridger /bin
 
 cp -r checkbridges /bin
 
-##############################################################################################
 
-Como Funciona e Exemplos de Aplicações
+# Como Funciona e Exemplos de Aplicações
 
 Os arquivos gravados em ~/Downloads do seu usuário contêm as configurações de IP e porta a serem utilizadas para a instância desejada do Tor daemon:
 
@@ -125,25 +122,20 @@ proxychains4.3.conf # 127.0.0.1:9062
 
 proxychains4.4.conf # 127.0.0.1:9064
 
-***Ao utilizar o proxychains4 -f com os arquivos de configuração correspondentes, podemos rotear o tráfego da instância do Tor para aplicações específicas, isolando esse circuito dos outros circuitos de diferentes instâncias. Veja alguns exemplos:
+> Ao utilizar o proxychains4 -f com os arquivos de configuração correspondentes, podemos rotear o tráfego da instância do Tor para aplicações específicas, isolando esse circuito dos outros circuitos de diferentes instâncias. Veja alguns exemplos:
+> 
+> proxychains4 firefox
+> 
+>proxychains4 -f ~/Downloads/proxychains4.2.conf ~/Downloads/Cake_nano_wallet/cake_wallet/cake_wallet
+> 
+> proxychains4 -f ~/Downloads/proxychains4.3.conf ~/Telegram/Telegram
+> 
+> proxychains4 -f ~/Downloads/proxychains4.4.conf ~/Downloads/Electrum/electrum-4.5.5-x86_64.AppImage
+> 
 
-proxychains4 firefox
+# Doe monero para nos ajudar: (donate XMR)
 
-proxychains4 -f ~/Downloads/proxychains4.2.conf ~/Downloads/Cake_nano_wallet/cake_wallet/cake_wallet
-
-proxychains4 -f ~/Downloads/proxychains4.3.conf ~/Telegram/Telegram
-
-proxychains4 -f ~/Downloads/proxychains4.4.conf ~/Downloads/Electrum/electrum-4.5.5-x86_64.AppImage
-
-
-
-
-
-##############################################################################################
-
-Doe monero para nos ajudar:
-
-87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
+    87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
 
 Página oficial de segurança digital:
 
